@@ -5,8 +5,8 @@ from selenium import webdriver
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 logger = logging.getLogger(__file__)
 
-DRIVER_PATH = "/bin/chromedriver"
-DOWNLOAD_DIR = "/var/tmp/downloads"
+CHROMEDRIVER_PATH = os.getenv("CHROMEDRIVER_PATH")
+DOWNLOAD_DIR = os.getenv("DOWNLOAD_DIR")
 
 def main():
 
@@ -17,7 +17,7 @@ def main():
 
     logger.info("Starting WebDriver")
 
-    driver = webdriver.Chrome(DRIVER_PATH, options=options)
+    driver = webdriver.Chrome(CHROMEDRIVER_PATH, options=options)
 
     driver.command_executor._commands["send_command"] = ("POST", '/session/$sessionId/chromium/send_command')
     params = {'cmd':'Page.setDownloadBehavior', 'params': {'behavior': 'allow', 'downloadPath': DOWNLOAD_DIR}}
