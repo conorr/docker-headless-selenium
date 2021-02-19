@@ -1,4 +1,6 @@
-# webdriver-docker-starter
+# docker-headless-selenium
+
+A template for running headless Selenium in a container using ChromeDriver.
 
 ## Local setup
 
@@ -9,11 +11,11 @@ source local-setup.sh
 ## Build Docker image
 
 ```
-docker build -t webdriver-docker-starter .
+docker build -t docker-headless-selenium .
 ```
 
 ## Run Docker image
 
 ```
-docker run --rm webdriver-docker-starter
+docker run --rm docker-headless-selenium
 ```
